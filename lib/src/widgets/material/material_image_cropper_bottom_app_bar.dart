@@ -1,16 +1,18 @@
+import 'package:croppy/src/src.dart';
 import 'package:flutter/material.dart';
 
-import 'package:croppy/src/src.dart';
-
 class MaterialImageCropperBottomAppBar extends StatelessWidget {
-  const MaterialImageCropperBottomAppBar({
-    super.key,
-    required this.controller,
-    required this.shouldPopAfterCrop,
-  });
+  const MaterialImageCropperBottomAppBar(
+      {super.key,
+      required this.controller,
+      required this.shouldPopAfterCrop,
+      required this.buttonColor,
+      required this.textColor});
 
   final CroppableImageController controller;
   final bool shouldPopAfterCrop;
+  final Color textColor;
+  final Color buttonColor;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,8 @@ class MaterialImageCropperBottomAppBar extends StatelessWidget {
               height: 40.0,
               child: TextButton(
                 onPressed: () => Navigator.maybePop(context),
-                child: Text(l10n.cancelLabel),
+                child:
+                    Text(l10n.cancelLabel, style: TextStyle(color: textColor)),
               ),
             ),
             const Spacer(),
@@ -55,8 +58,15 @@ class MaterialImageCropperBottomAppBar extends StatelessWidget {
                   }
                 },
                 builder: (context, onTap) => FilledButton(
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all<Color>(
+                        buttonColor), // Change to desired color
+                  ),
                   onPressed: onTap,
-                  child: Text(l10n.saveLabel),
+                  child: Text(
+                    l10n.saveLabel,
+                    style: TextStyle(color: textColor),
+                  ),
                 ),
               ),
             ),

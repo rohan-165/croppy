@@ -67,5 +67,5 @@ class CroppyLocalizationsPirateEn extends CroppyLocalizations {
   String get materialSquareAspectRatioLabel => 'Square';
 
   @override
-  String get saveLabel => 'Save';
+  String get saveLabel => 'Apply';
 }

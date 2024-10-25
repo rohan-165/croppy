@@ -40,19 +40,19 @@ import 'package:flutter/material.dart';
 /// You can use the [themeData] to customize the appearance of the cropper. If
 /// none is provided, a new ThemeData will be constructed internally based on
 /// the primary color of the surrounding theme.
-Future<CropImageResult?> showMaterialImageCropper(
-  BuildContext context, {
-  required ImageProvider imageProvider,
-  CroppableImageData? initialData,
-  CroppableImagePostProcessFn? postProcessFn,
-  CropShapeFn? cropPathFn,
-  List<CropAspectRatio?>? allowedAspectRatios,
-  List<Transformation>? enabledTransformations,
-  Object? heroTag,
-  bool shouldPopAfterCrop = true,
-  Locale? locale,
-  ThemeData? themeData,
-}) async {
+Future<CropImageResult?> showMaterialImageCropper(BuildContext context,
+    {required ImageProvider imageProvider,
+    CroppableImageData? initialData,
+    CroppableImagePostProcessFn? postProcessFn,
+    CropShapeFn? cropPathFn,
+    List<CropAspectRatio?>? allowedAspectRatios,
+    List<Transformation>? enabledTransformations,
+    Object? heroTag,
+    bool shouldPopAfterCrop = true,
+    Locale? locale,
+    ThemeData? themeData,
+    Color buttonColor = Colors.black,
+    Color textColor = Colors.white}) async {
   late final CroppableImageData _initialData;
 
   if (initialData != null) {
@@ -75,6 +75,8 @@ Future<CropImageResult?> showMaterialImageCropper(
         allowedAspectRatios: allowedAspectRatios,
         enabledTransformations: enabledTransformations,
         builder: (context, controller) => MaterialImageCropperPage(
+          buttonColor: buttonColor,
+          textColor: textColor,
           heroTag: heroTag,
           controller: controller,
           shouldPopAfterCrop: shouldPopAfterCrop,

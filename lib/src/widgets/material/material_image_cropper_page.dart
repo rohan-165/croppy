@@ -3,20 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class MaterialImageCropperPage extends StatelessWidget {
-  const MaterialImageCropperPage({
-    super.key,
-    required this.controller,
-    required this.shouldPopAfterCrop,
-    this.gesturePadding = 16.0,
-    this.heroTag,
-    this.themeData,
-  });
+  const MaterialImageCropperPage(
+      {super.key,
+      required this.controller,
+      required this.shouldPopAfterCrop,
+      this.gesturePadding = 16.0,
+      this.heroTag,
+      this.themeData,
+      required this.buttonColor,
+      required this.textColor});
 
   final CroppableImageController controller;
   final double gesturePadding;
   final Object? heroTag;
   final bool shouldPopAfterCrop;
   final ThemeData? themeData;
+  final Color buttonColor;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +78,8 @@ class MaterialImageCropperPage extends StatelessWidget {
                       builder: (context, _) => Opacity(
                         opacity: overlayOpacityAnimation.value,
                         child: MaterialImageCropperBottomAppBar(
+                          buttonColor: buttonColor,
+                          textColor: textColor,
                           controller: controller,
                           shouldPopAfterCrop: shouldPopAfterCrop,
                         ),

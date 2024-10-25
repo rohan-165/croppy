@@ -92,7 +92,7 @@ class _SettingsModalWidgetState extends State<SettingsModalWidget> {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
-      onPopInvokedWithResult: (didPop, _) {
+      onPopInvoked: (didPop) {
         if (didPop) return;
         Navigator.of(context).pop(_settings);
       },

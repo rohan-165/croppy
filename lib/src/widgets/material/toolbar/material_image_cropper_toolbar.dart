@@ -4,9 +4,11 @@ import 'package:croppy/croppy.dart';
 import 'package:croppy/src/widgets/material/toolbar/material_rotation_slider.dart';
 
 class MaterialImageCropperToolbar extends StatelessWidget {
-  const MaterialImageCropperToolbar({super.key, required this.controller});
+  const MaterialImageCropperToolbar(
+      {super.key, required this.controller, required this.color});
 
   final CroppableImageController controller;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,7 @@ class MaterialImageCropperToolbar extends StatelessWidget {
         children: [
           if (controller.isTransformationEnabled(Transformation.rotateZ))
             MaterialRotationSlider(
+              color: Colors.white,
               controller: controller,
             ),
           Stack(
@@ -55,7 +58,10 @@ class MaterialImageCropperToolbar extends StatelessWidget {
                                 );
                               },
                               isSelected: ar != null,
-                              icon: const Icon(Icons.aspect_ratio_rounded),
+                              icon: Icon(
+                                Icons.aspect_ratio_rounded,
+                                color: color,
+                              ),
                             ),
                           ),
                         ),
@@ -72,7 +78,8 @@ class MaterialImageCropperToolbar extends StatelessWidget {
                                 controller.onRotateCCW();
                               },
                               isSelected: clampAngle(rotationZ) > epsilon,
-                              icon: const Icon(
+                              icon: Icon(
+                                color: color,
                                 Icons.rotate_90_degrees_ccw_rounded,
                               ),
                             ),
@@ -113,7 +120,10 @@ class MaterialImageCropperToolbar extends StatelessWidget {
                     ),
                     child: TextButton(
                       onPressed: () => controller.reset(),
-                      child: Text(l10n.materialResetLabel),
+                      child: Text(
+                        l10n.materialResetLabel,
+                        style: TextStyle(color: color),
+                      ),
                     ),
                   ),
                 ),

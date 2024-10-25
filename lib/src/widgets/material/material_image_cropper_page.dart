@@ -68,6 +68,7 @@ class MaterialImageCropperPage extends StatelessWidget {
                         builder: (context, _) => Opacity(
                           opacity: overlayOpacityAnimation.value,
                           child: MaterialImageCropperToolbar(
+                            color: textColor,
                             controller: controller,
                           ),
                         ),

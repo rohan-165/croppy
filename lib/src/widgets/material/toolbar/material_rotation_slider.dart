@@ -75,7 +75,8 @@ class _MaterialRotationSliderState extends State<MaterialRotationSlider> {
     final color = widget.color ?? theme.colorScheme.onSurface;
     final activeColor = widget.activeColor ?? theme.colorScheme.primary;
 
-    final labelStyle = theme.textTheme.labelMedium?.copyWith(color: color);
+    final labelStyle =
+        theme.textTheme.labelMedium?.copyWith(color: widget.color);
     final degreeSignWidth = _computeDegreeSignWidth(context, labelStyle);
 
     return GestureDetector(
@@ -100,9 +101,7 @@ class _MaterialRotationSliderState extends State<MaterialRotationSlider> {
                       child: Text(
                         l10n.getRoundedDegrees(rotationZ * 180 / pi),
                         style: labelStyle?.copyWith(
-                          color: value.abs() > epsilon
-                              ? theme.colorScheme.primary
-                              : null,
+                          color: value.abs() > epsilon ? widget.color : null,
                         ),
                       ),
                     ),
@@ -113,8 +112,8 @@ class _MaterialRotationSliderState extends State<MaterialRotationSlider> {
                       child: CustomPaint(
                         painter: _MaterialRotationSliderPainter(
                           value: value,
-                          baseColor: color,
-                          primaryColor: activeColor,
+                          baseColor: widget.color ?? color,
+                          primaryColor: Colors.white,
                         ),
                       ),
                     ),

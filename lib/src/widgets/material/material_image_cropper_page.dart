@@ -9,7 +9,9 @@ class MaterialImageCropperPage extends StatelessWidget {
       required this.shouldPopAfterCrop,
       this.gesturePadding = 16.0,
       this.heroTag,
+      required this.text,
       this.themeData,
+      required this.cropBgColor,
       required this.buttonColor,
       required this.textColor});
 
@@ -20,6 +22,8 @@ class MaterialImageCropperPage extends StatelessWidget {
   final ThemeData? themeData;
   final Color buttonColor;
   final Color textColor;
+  final String text;
+  final Color cropBgColor;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +44,7 @@ class MaterialImageCropperPage extends StatelessWidget {
           heroTag: heroTag,
           builder: (context, overlayOpacityAnimation) {
             return Scaffold(
-              backgroundColor: theme.scaffoldBackgroundColor,
+              backgroundColor: cropBgColor,
               body: SafeArea(
                 child: Column(
                   children: [
@@ -79,6 +83,7 @@ class MaterialImageCropperPage extends StatelessWidget {
                       builder: (context, _) => Opacity(
                         opacity: overlayOpacityAnimation.value,
                         child: MaterialImageCropperBottomAppBar(
+                          text: text,
                           buttonColor: buttonColor,
                           textColor: textColor,
                           controller: controller,

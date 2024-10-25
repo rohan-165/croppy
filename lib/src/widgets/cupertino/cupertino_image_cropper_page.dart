@@ -42,7 +42,7 @@ class CupertinoImageCropperPage extends StatelessWidget {
           heroTag: heroTag,
           builder: (context, overlayOpacityAnimation) {
             return CupertinoPageScaffold(
-              backgroundColor: theme.scaffoldBackgroundColor,
+              backgroundColor: Colors.grey,
               navigationBar: CupertinoImageCropperAppBar(
                 controller: controller,
               ),

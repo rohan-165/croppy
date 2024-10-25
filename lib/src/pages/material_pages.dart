@@ -51,6 +51,8 @@ Future<CropImageResult?> showMaterialImageCropper(BuildContext context,
     bool shouldPopAfterCrop = true,
     Locale? locale,
     ThemeData? themeData,
+    Color cropBgColor = Colors.black54,
+    String text = '',
     Color buttonColor = Colors.black,
     Color textColor = Colors.white}) async {
   late final CroppableImageData _initialData;
@@ -75,6 +77,8 @@ Future<CropImageResult?> showMaterialImageCropper(BuildContext context,
         allowedAspectRatios: allowedAspectRatios,
         enabledTransformations: enabledTransformations,
         builder: (context, controller) => MaterialImageCropperPage(
+          cropBgColor: cropBgColor,
+          text: text,
           buttonColor: buttonColor,
           textColor: textColor,
           heroTag: heroTag,

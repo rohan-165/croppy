@@ -7,12 +7,14 @@ class MaterialImageCropperBottomAppBar extends StatelessWidget {
       required this.controller,
       required this.shouldPopAfterCrop,
       required this.buttonColor,
+      required this.text,
       required this.textColor});
 
   final CroppableImageController controller;
   final bool shouldPopAfterCrop;
   final Color textColor;
   final Color buttonColor;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +66,7 @@ class MaterialImageCropperBottomAppBar extends StatelessWidget {
                   ),
                   onPressed: onTap,
                   child: Text(
-                    l10n.saveLabel,
+                    text,
                     style: TextStyle(color: textColor),
                   ),
                 ),

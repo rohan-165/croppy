@@ -184,6 +184,7 @@ class _MyHomePageState extends State<MyHomePage> {
               final page = _pageController.page?.round() ?? 0;
 
               showMaterialImageCropper(
+                text: 'Apply',
                 textColor: Colors.white,
                 buttonColor: Colors.black,
                 context,

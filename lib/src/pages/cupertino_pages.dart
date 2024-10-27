@@ -52,6 +52,7 @@ Future<CropImageResult?> showCupertinoImageCropper(BuildContext context,
     Locale? locale,
     CupertinoThemeData? themeData,
     Color? textColor,
+    Color? bgColor,
     Color? buttonColor}) async {
   late final CroppableImageData _initialData;
 
@@ -81,6 +82,7 @@ Future<CropImageResult?> showCupertinoImageCropper(BuildContext context,
           themeData: themeData,
           buttonColor: textColor,
           textColor: buttonColor,
+          bgColor: bgColor,
         ),
       ),
     );

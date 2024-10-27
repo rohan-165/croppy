@@ -40,19 +40,19 @@ import 'package:flutter/cupertino.dart';
 /// You can use the [themeData] to customize the appearance of the cropper. If
 /// none is provided, a new CupertinoThemeData will be constructed internally
 /// based on the primary color of the surrounding theme.
-Future<CropImageResult?> showCupertinoImageCropper(
-  BuildContext context, {
-  required ImageProvider imageProvider,
-  CroppableImageData? initialData,
-  CroppableImagePostProcessFn? postProcessFn,
-  CropShapeFn? cropPathFn,
-  List<CropAspectRatio?>? allowedAspectRatios,
-  List<Transformation>? enabledTransformations,
-  Object? heroTag,
-  bool shouldPopAfterCrop = true,
-  Locale? locale,
-  CupertinoThemeData? themeData,
-}) async {
+Future<CropImageResult?> showCupertinoImageCropper(BuildContext context,
+    {required ImageProvider imageProvider,
+    CroppableImageData? initialData,
+    CroppableImagePostProcessFn? postProcessFn,
+    CropShapeFn? cropPathFn,
+    List<CropAspectRatio?>? allowedAspectRatios,
+    List<Transformation>? enabledTransformations,
+    Object? heroTag,
+    bool shouldPopAfterCrop = true,
+    Locale? locale,
+    CupertinoThemeData? themeData,
+    Color? textColor,
+    Color? buttonColor}) async {
   late final CroppableImageData _initialData;
 
   if (initialData != null) {
@@ -79,6 +79,8 @@ Future<CropImageResult?> showCupertinoImageCropper(
           controller: controller,
           shouldPopAfterCrop: shouldPopAfterCrop,
           themeData: themeData,
+          buttonColor: textColor,
+          textColor: buttonColor,
         ),
       ),
     );

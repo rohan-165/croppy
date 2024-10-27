@@ -7,10 +7,12 @@ class CupertinoImageCropperAppBar extends StatelessWidget
     implements ObstructingPreferredSizeWidget {
   const CupertinoImageCropperAppBar({
     super.key,
+    required this.color,
     required this.controller,
   });
 
   final CroppableImageController controller;
+  final Color color;
 
   Widget _buildAppBarButtons(BuildContext context) {
     return Row(
@@ -23,8 +25,8 @@ class CupertinoImageCropperAppBar extends StatelessWidget
               horizontal: 16.0,
               vertical: 10.0,
             ),
-            child: const CupertinoFlipHorizontalIcon(
-              color: CupertinoColors.systemGrey2,
+            child: CupertinoFlipHorizontalIcon(
+              color: color,
               size: 24.0,
             ),
           ),
@@ -36,9 +38,9 @@ class CupertinoImageCropperAppBar extends StatelessWidget
               horizontal: 16.0,
               vertical: 10.0,
             ),
-            child: const Icon(
+            child: Icon(
               CupertinoIcons.rotate_left_fill,
-              color: CupertinoColors.systemGrey2,
+              color: color,
             ),
           ),
         const Spacer(),
@@ -66,9 +68,7 @@ class CupertinoImageCropperAppBar extends StatelessWidget
                 vertical: 10.0,
               ),
               child: CupertinoAspectRatioIcon(
-                color: toolbar == CupertinoCroppableImageToolbar.aspectRatio
-                    ? CupertinoTheme.of(context).primaryColor
-                    : CupertinoColors.systemGrey2,
+                color: color,
                 size: 24.0,
               ),
             ),
@@ -103,6 +103,7 @@ class CupertinoImageCropperAppBar extends StatelessWidget
                     ),
                   ),
                   child: CupertinoButton(
+                    // color: color,
                     onPressed: controller.reset,
                     minSize: 44.0,
                     padding: const EdgeInsets.symmetric(
@@ -114,7 +115,7 @@ class CupertinoImageCropperAppBar extends StatelessWidget
                       style: CupertinoTheme.of(context)
                           .textTheme
                           .navActionTextStyle
-                          .copyWith(fontSize: 14.0),
+                          .copyWith(fontSize: 14.0, color: color),
                     ),
                   ),
                 ),

@@ -7,19 +7,24 @@ import 'package:flutter/services.dart';
 const kCupertinoImageCropperBackgroundColor = Color(0xFF0A0A0A);
 
 class CupertinoImageCropperPage extends StatelessWidget {
-  const CupertinoImageCropperPage({
-    super.key,
-    required this.controller,
-    required this.shouldPopAfterCrop,
-    this.gesturePadding = 16.0,
-    this.heroTag,
-    this.themeData,
-  });
+  CupertinoImageCropperPage(
+      {super.key,
+      required this.controller,
+      required this.shouldPopAfterCrop,
+      this.gesturePadding = 16.0,
+      this.heroTag,
+      this.themeData,
+      this.bgColor,
+      this.textColor,
+      this.buttonColor});
 
   final CroppableImageController controller;
   final double gesturePadding;
   final Object? heroTag;
   final bool shouldPopAfterCrop;
+  Color? textColor;
+  Color? bgColor;
+  Color? buttonColor;
 
   final CupertinoThemeData? themeData;
 
@@ -42,8 +47,9 @@ class CupertinoImageCropperPage extends StatelessWidget {
           heroTag: heroTag,
           builder: (context, overlayOpacityAnimation) {
             return CupertinoPageScaffold(
-              backgroundColor: Colors.grey,
+              backgroundColor: bgColor ?? theme.scaffoldBackgroundColor,
               navigationBar: CupertinoImageCropperAppBar(
+                color: textColor ?? theme.barBackgroundColor,
                 controller: controller,
               ),
               child: SafeArea(
@@ -81,6 +87,9 @@ class CupertinoImageCropperPage extends StatelessWidget {
                                 ),
                               ),
                               CupertinoImageCropperBottomAppBar(
+                                buttonColor: buttonColor ?? theme.primaryColor,
+                                textColor:
+                                    textColor ?? theme.scaffoldBackgroundColor,
                                 controller: controller,
                                 shouldPopAfterCrop: shouldPopAfterCrop,
                               ),

@@ -153,6 +153,8 @@ class _MyHomePageState extends State<MyHomePage> {
               final page = _pageController.page?.round() ?? 0;
 
               showCupertinoImageCropper(
+                buttonColor: Colors.white,
+                textColor: Colors.black,
                 context,
                 locale: _cropSettings.locale,
                 imageProvider: _imageProviders[page],

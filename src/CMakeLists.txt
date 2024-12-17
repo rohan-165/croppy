@@ -1,19 +1,16 @@
+# The Flutter tooling requires that developers have CMake 3.10 or later
+# installed. You should not increase this version, as doing so will cause
+# the plugin to fail to compile for some customers of the plugin.
 cmake_minimum_required(VERSION 3.10)
 
 project(croppy VERSION 0.0.1 LANGUAGES C CXX)
 
-include_directories(${CMAKE_SOURCE_DIR}/kiwi)
-
-# Force libc++ and set C++17 standard
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++ -fPIC -Wno-error=pointer-to-int-cast -D__ANDROID_API__=24")
+target_link_libraries(croppy PRIVATE c++_shared)
 
-# Ensure NDK and platform compatibility
-set(CMAKE_SYSTEM_VERSION 24)
 
-# Define uintptr_t for proper casting
-add_definitions(-Duintptr_t=unsigned long)
+include_directories(kiwi)
 
 add_library(croppy SHARED
   "fit_polygon_in_quad.cpp"
